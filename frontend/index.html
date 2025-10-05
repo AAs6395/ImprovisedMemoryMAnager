@@ -3,174 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Tracking & Engagement Kit</title>
+    <title>💾 Improvised Memory Manager</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <header>
-            <h1>🏥 Medical Tracking & Engagement Kit</h1>
-            <p>Your complete health management solution</p>
+        <header class="header">
+            <div class="header-content">
+                <h1>💾 Improvised Memory Manager</h1>
+                <p class="subtitle">Real-time Memory Allocation with Best-Fit & Buddy System</p>
+            </div>
+            <div class="header-stats">
+                <span class="status-indicator" id="serverStatus">🔴 Disconnected</span>
+            </div>
         </header>
 
-        <!-- Statistics Cards -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">💊</div>
-                <div class="stat-info">
-                    <h3 id="totalMeds">0</h3>
-                    <p>Active Medications</p>
+        <div class="main-content">
+            <!-- Control Panel -->
+            <section class="control-panel">
+                <h2>⚙️ Control Panel</h2>
+                
+                <div class="control-group">
+                    <label for="totalMemory">Total Memory Size (KB)</label>
+                    <input type="number" id="totalMemory" value="1024" min="64" max="8192" step="64">
+                    <button id="initMemory" class="btn btn-primary">
+                        <span class="btn-icon">🚀</span> Initialize Memory
+                    </button>
                 </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">⏰</div>
-                <div class="stat-info">
-                    <h3 id="todayReminders">0</h3>
-                    <p>Today's Reminders</p>
+
+                <div class="divider"></div>
+
+                <div class="control-group">
+                    <label for="processName">Process Name</label>
+                    <input type="text" id="processName" placeholder="e.g., P1, Chrome, System">
+                    
+                    <label for="processSize">Process Size (KB)</label>
+                    <input type="number" id="processSize" placeholder="e.g., 256" min="1">
+                    
+                    <div class="button-group">
+                        <button id="allocateBtn" class="btn btn-success">
+                            <span class="btn-icon">➕</span> Allocate Process
+                        </button>
+                        <button id="compactBtn" class="btn btn-warning">
+                            <span class="btn-icon">🔄</span> Compact Memory
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">📅</div>
-                <div class="stat-info">
-                    <h3 id="upcomingAppointments">0</h3>
-                    <p>Appointments</p>
+            </section>
+
+            <!-- Statistics Dashboard -->
+            <section class="stats-section">
+                <div class="stat-card stat-total">
+                    <div class="stat-icon">💿</div>
+                    <div class="stat-content">
+                        <h3>Total Memory</h3>
+                        <p id="statTotal" class="stat-value">0 KB</p>
+                    </div>
                 </div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">❤️</div>
-                <div class="stat-info">
-                    <h3 id="vitalRecords">0</h3>
-                    <p>Vital Records</p>
+                <div class="stat-card stat-used">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3>Used Memory</h3>
+                        <p id="statUsed" class="stat-value">0 KB</p>
+                        <span id="statUsedPercent" class="stat-percent">0%</span>
+                    </div>
                 </div>
-            </div>
+                <div class="stat-card stat-free">
+                    <div class="stat-icon">✨</div>
+                    <div class="stat-content">
+                        <h3>Free Memory</h3>
+                        <p id="statFree" class="stat-value">0 KB</p>
+                        <span id="statFreePercent" class="stat-percent">0%</span>
+                    </div>
+                </div>
+                <div class="stat-card stat-frag">
+                    <div class="stat-icon">⚠️</div>
+                    <div class="stat-content">
+                        <h3>Fragmentation</h3>
+                        <p id="statFrag" class="stat-value">0%</p>
+                        <span id="fragBlocks" class="stat-detail">0 blocks</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Memory Visualization -->
+            <section class="visualization-section">
+                <div class="section-header">
+                    <h2>🎨 Memory Block Visualization</h2>
+                    <div class="legend">
+                        <span class="legend-item"><span class="legend-color allocated"></span> Allocated</span>
+                        <span class="legend-item"><span class="legend-color free"></span> Free</span>
+                    </div>
+                </div>
+                <div id="memoryBlocks" class="memory-blocks">
+                    <div class="empty-state">
+                        <p>Initialize memory to start visualization</p>
+                    </div>
+                </div>
+                <div class="memory-bar">
+                    <div id="memoryBarFill" class="memory-bar-fill"></div>
+                </div>
+            </section>
+
+            <!-- Active Processes -->
+            <section class="processes-section">
+                <h2>📋 Active Processes</h2>
+                <div id="processList" class="process-list">
+                    <div class="empty-state">No active processes</div>
+                </div>
+            </section>
+
+            <!-- Activity Log -->
+            <section class="log-section">
+                <div class="section-header">
+                    <h2>📝 Activity Log</h2>
+                    <button id="clearLog" class="btn btn-small">Clear Log</button>
+                </div>
+                <div id="activityLog" class="activity-log"></div>
+            </section>
         </div>
 
-        <!-- Main Dashboard -->
-        <div class="dashboard">
-            <!-- Medication Tracker -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-medicine">💊</div>
-                    <h2>Medication Tracker</h2>
-                </div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <label>Medicine Name</label>
-                        <input type="text" id="medName" placeholder="Enter medicine name">
-                    </div>
-                    <div class="input-group">
-                        <label>Dosage</label>
-                        <input type="text" id="medDosage" placeholder="e.g., 500mg">
-                    </div>
-                    <div class="input-group">
-                        <label>Frequency</label>
-                        <select id="medFrequency">
-                            <option value="Once daily">Once daily</option>
-                            <option value="Twice daily">Twice daily</option>
-                            <option value="Three times daily">Three times daily</option>
-                            <option value="As needed">As needed</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label>Time</label>
-                        <input type="time" id="medTime">
-                    </div>
-                    <button class="btn btn-primary" onclick="addMedication()">Add Medication</button>
-                </div>
-                <div class="card-list" id="medicationList"></div>
-            </div>
-
-            <!-- Reminders -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-reminder">⏰</div>
-                    <h2>Reminders</h2>
-                </div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <label>Reminder Title</label>
-                        <input type="text" id="reminderTitle" placeholder="e.g., Doctor visit">
-                    </div>
-                    <div class="input-group">
-                        <label>Date & Time</label>
-                        <input type="datetime-local" id="reminderDateTime">
-                    </div>
-                    <div class="input-group">
-                        <label>Notes</label>
-                        <textarea id="reminderNotes" rows="3" placeholder="Additional notes..."></textarea>
-                    </div>
-                    <button class="btn btn-primary" onclick="addReminder()">Set Reminder</button>
-                </div>
-                <div class="card-list" id="reminderList"></div>
-            </div>
-
-            <!-- Vital Signs -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-vitals">❤️</div>
-                    <h2>Vital Signs Tracker</h2>
-                </div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <label>Blood Pressure (mmHg)</label>
-                        <input type="text" id="bloodPressure" placeholder="e.g., 120/80">
-                    </div>
-                    <div class="input-group">
-                        <label>Heart Rate (bpm)</label>
-                        <input type="number" id="heartRate" placeholder="e.g., 72">
-                    </div>
-                    <div class="input-group">
-                        <label>Temperature (°F)</label>
-                        <input type="number" step="0.1" id="temperature" placeholder="e.g., 98.6">
-                    </div>
-                    <div class="input-group">
-                        <label>Blood Sugar (mg/dL)</label>
-                        <input type="number" id="bloodSugar" placeholder="e.g., 100">
-                    </div>
-                    <button class="btn btn-primary" onclick="addVitalSigns()">Record Vitals</button>
-                </div>
-                <div class="card-list" id="vitalsList"></div>
-            </div>
-
-            <!-- Appointments -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon icon-appointments">📅</div>
-                    <h2>Appointments</h2>
-                </div>
-                <div class="card-body">
-                    <div class="input-group">
-                        <label>Doctor/Clinic Name</label>
-                        <input type="text" id="appointmentDoctor" placeholder="Enter doctor or clinic name">
-                    </div>
-                    <div class="input-group">
-                        <label>Appointment Type</label>
-                        <select id="appointmentType">
-                            <option value="Check-up">Check-up</option>
-                            <option value="Follow-up">Follow-up</option>
-                            <option value="Consultation">Consultation</option>
-                            <option value="Test">Test/Lab Work</option>
-                            <option value="Emergency">Emergency</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label>Date & Time</label>
-                        <input type="datetime-local" id="appointmentDateTime">
-                    </div>
-                    <div class="input-group">
-                        <label>Location</label>
-                        <input type="text" id="appointmentLocation" placeholder="Clinic address">
-                    </div>
-                    <button class="btn btn-primary" onclick="addAppointment()">Schedule Appointment</button>
-                </div>
-                <div class="card-list" id="appointmentList"></div>
-            </div>
-        </div>
+        <footer class="footer">
+            <p>Improvised Memory Manager | Best-Fit + Buddy System Hybrid | Built with ❤️</p>
+        </footer>
     </div>
-
-    <!-- Notification Toast -->
-    <div id="toast" class="toast"></div>
 
     <script src="script.js"></script>
 </body>
