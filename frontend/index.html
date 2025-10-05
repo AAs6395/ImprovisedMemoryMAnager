@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Tracking & Engagement Kit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🏥 Medical Tracking & Engagement Kit</h1>
+            <p>Your complete health management solution</p>
+        </header>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">💊</div>
+                <div class="stat-info">
+                    <h3 id="totalMeds">0</h3>
+                    <p>Active Medications</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏰</div>
+                <div class="stat-info">
+                    <h3 id="todayReminders">0</h3>
+                    <p>Today's Reminders</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📅</div>
+                <div class="stat-info">
+                    <h3 id="upcomingAppointments">0</h3>
+                    <p>Appointments</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">❤️</div>
+                <div class="stat-info">
+                    <h3 id="vitalRecords">0</h3>
+                    <p>Vital Records</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div class="dashboard">
+            <!-- Medication Tracker -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-medicine">💊</div>
+                    <h2>Medication Tracker</h2>
+                </div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <label>Medicine Name</label>
+                        <input type="text" id="medName" placeholder="Enter medicine name">
+                    </div>
+                    <div class="input-group">
+                        <label>Dosage</label>
+                        <input type="text" id="medDosage" placeholder="e.g., 500mg">
+                    </div>
+                    <div class="input-group">
+                        <label>Frequency</label>
+                        <select id="medFrequency">
+                            <option value="Once daily">Once daily</option>
+                            <option value="Twice daily">Twice daily</option>
+                            <option value="Three times daily">Three times daily</option>
+                            <option value="As needed">As needed</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Time</label>
+                        <input type="time" id="medTime">
+                    </div>
+                    <button class="btn btn-primary" onclick="addMedication()">Add Medication</button>
+                </div>
+                <div class="card-list" id="medicationList"></div>
+            </div>
+
+            <!-- Reminders -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-reminder">⏰</div>
+                    <h2>Reminders</h2>
+                </div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <label>Reminder Title</label>
+                        <input type="text" id="reminderTitle" placeholder="e.g., Doctor visit">
+                    </div>
+                    <div class="input-group">
+                        <label>Date & Time</label>
+                        <input type="datetime-local" id="reminderDateTime">
+                    </div>
+                    <div class="input-group">
+                        <label>Notes</label>
+                        <textarea id="reminderNotes" rows="3" placeholder="Additional notes..."></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="addReminder()">Set Reminder</button>
+                </div>
+                <div class="card-list" id="reminderList"></div>
+            </div>
+
+            <!-- Vital Signs -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-vitals">❤️</div>
+                    <h2>Vital Signs Tracker</h2>
+                </div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <label>Blood Pressure (mmHg)</label>
+                        <input type="text" id="bloodPressure" placeholder="e.g., 120/80">
+                    </div>
+                    <div class="input-group">
+                        <label>Heart Rate (bpm)</label>
+                        <input type="number" id="heartRate" placeholder="e.g., 72">
+                    </div>
+                    <div class="input-group">
+                        <label>Temperature (°F)</label>
+                        <input type="number" step="0.1" id="temperature" placeholder="e.g., 98.6">
+                    </div>
+                    <div class="input-group">
+                        <label>Blood Sugar (mg/dL)</label>
+                        <input type="number" id="bloodSugar" placeholder="e.g., 100">
+                    </div>
+                    <button class="btn btn-primary" onclick="addVitalSigns()">Record Vitals</button>
+                </div>
+                <div class="card-list" id="vitalsList"></div>
+            </div>
+
+            <!-- Appointments -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-appointments">📅</div>
+                    <h2>Appointments</h2>
+                </div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <label>Doctor/Clinic Name</label>
+                        <input type="text" id="appointmentDoctor" placeholder="Enter doctor or clinic name">
+                    </div>
+                    <div class="input-group">
+                        <label>Appointment Type</label>
+                        <select id="appointmentType">
+                            <option value="Check-up">Check-up</option>
+                            <option value="Follow-up">Follow-up</option>
+                            <option value="Consultation">Consultation</option>
+                            <option value="Test">Test/Lab Work</option>
+                            <option value="Emergency">Emergency</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Date & Time</label>
+                        <input type="datetime-local" id="appointmentDateTime">
+                    </div>
+                    <div class="input-group">
+                        <label>Location</label>
+                        <input type="text" id="appointmentLocation" placeholder="Clinic address">
+                    </div>
+                    <button class="btn btn-primary" onclick="addAppointment()">Schedule Appointment</button>
+                </div>
+                <div class="card-list" id="appointmentList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
