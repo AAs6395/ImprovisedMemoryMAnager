@@ -7,7 +7,6 @@
 
 ## 📋 Table of Contents
 - [Project Overview](#project-overview)
-- [Team Members](#team-members)
 - [Problem Statement](#problem-statement)
 - [Uniqueness](#uniqueness-of-the-project)
 - [Features](#features)
@@ -18,7 +17,6 @@
 - [API Documentation](#api-documentation)
 - [Testing](#testing)
 - [Analytics](#analytics)
-- [Screenshots](#screenshots)
 - [Future Scope](#future-scope)
 - [References](#references)
 
@@ -36,18 +34,7 @@ The **Improvised Memory Manager** is a comprehensive project designed to simulat
 
 ---
 
-## 2. Team Members
-
-| Name | Roll Number | Contribution |
-|------|------------|-------------|
-| Member 1 | XXXXX | Frontend Development (HTML/CSS/JS) |
-| Member 2 | XXXXX | Backend Development (Python/FastAPI) |
-| Member 3 | XXXXX | Testing & Quality Assurance |
-| Member 4 | XXXXX | Analytics & Documentation |
-
----
-
-## 3. Problem Statement
+## 2. Problem Statement
 
 Memory fragmentation and inefficient allocation are major issues in operating systems that can lead to:
 - **Wasted memory resources**
@@ -67,7 +54,7 @@ This project addresses these challenges by implementing an **improvised memory m
 
 ---
 
-## 4. Uniqueness of the Project
+## 3. Uniqueness of the Project
 
 ### What Makes This Different?
 
@@ -82,7 +69,7 @@ This project addresses these challenges by implementing an **improvised memory m
 
 ---
 
-## 5. Features
+## 4. Features
 
 ### Core Features
 ✨ **Memory Initialization** - Set custom total memory size  
@@ -102,7 +89,7 @@ This project addresses these challenges by implementing an **improvised memory m
 
 ---
 
-## 6. Technology Stack
+## 5. Technology Stack
 
 ### Frontend
 - **HTML5** - Structure and semantic markup
@@ -123,7 +110,7 @@ This project addresses these challenges by implementing an **improvised memory m
 
 ---
 
-## 7. Project Structure
+## 6. Project Structure
 
 ```
 improvised-memory-manager/
@@ -149,7 +136,7 @@ improvised-memory-manager/
 
 ---
 
-## 8. Installation
+## 7. Installation
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -176,7 +163,7 @@ If you see the demo output, installation is successful! ✅
 
 ---
 
-## 9. Usage
+## 8. Usage
 
 ### Starting the Backend Server
 
@@ -232,7 +219,7 @@ Then navigate to: `http://localhost:8080`
 
 ---
 
-## 10. API Documentation
+## 9. API Documentation
 
 ### Base URL
 ```
@@ -293,7 +280,7 @@ Visit `http://localhost:8000/docs` for Swagger UI documentation with interactive
 
 ---
 
-## 11. Testing
+## 10. Testing
 
 ### Run All Tests
 ```bash
@@ -331,7 +318,7 @@ tests/test_buddy.py::TestInitialization::test_custom_size PASSED        [  6%]
 
 ---
 
-## 12. Analytics
+## 11. Analytics
 
 ### Run Performance Analysis
 ```bash
@@ -357,27 +344,8 @@ The script generates 5 PNG files:
 
 ---
 
-## 13. Screenshots
 
-### Main Dashboard
-![Dashboard](screenshots/dashboard.png)
-*Real-time memory visualization with statistics*
-
-### Memory Block Visualization
-![Blocks](screenshots/blocks.png)
-*Color-coded memory blocks showing allocation state*
-
-### Process Management
-![Processes](screenshots/processes.png)
-*Active processes with deallocation controls*
-
-### Analytics Graphs
-![Analytics](screenshots/analytics.png)
-*Performance comparison and trend analysis*
-
----
-
-## 14. Future Scope
+## 12. Future Scope
 
 ### Planned Enhancements
 - [ ] **Multiple Allocation Strategies**
@@ -411,7 +379,7 @@ The script generates 5 PNG files:
 
 ---
 
-## 15. References
+## 13. References
 
 ### Academic Resources
 1. **Operating System Concepts** (10th Edition)  
@@ -439,7 +407,7 @@ The script generates 5 PNG files:
 
 ---
 
-## 16. Contributing
+## 14. Contributing
 
 We welcome contributions! Please follow these steps:
 
@@ -451,30 +419,12 @@ We welcome contributions! Please follow these steps:
 
 ---
 
-## 17. License
+## 15. License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 18. Contact
-
-For questions, suggestions, or issues:
-
-- **Project Repository**: [GitHub](https://github.com/yourusername/improvised-memory-manager)
-- **Documentation**: [Wiki](https://github.com/yourusername/improvised-memory-manager/wiki)
-- **Issues**: [Issue Tracker](https://github.com/yourusername/improvised-memory-manager/issues)
+This project is licensed under the MIT License - see the  file for details.
 
 ---
 
-## 19. Acknowledgments
-
-- Thanks to our instructors for guidance on memory management concepts
-- FastAPI community for excellent documentation
-- matplotlib contributors for visualization tools
-- All team members for their dedication and hard work
-
----
 
 <div align="center">
 
