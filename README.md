@@ -428,8 +428,6 @@ This project is licensed under the MIT License - see the  file for details.
 
 <div align="center">
 
-**Built with ❤️ for Operating Systems PBL**
-
 ⭐ Star this repo if you find it helpful!
 
 </div>
