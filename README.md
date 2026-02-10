@@ -6,7 +6,7 @@
 ![Status](https://img.shields.io/badge/Status-Active-success.svg)
 
 ## 📋 Table of Contents
-- [Project Overview](#project-overview)l
+- [Project Overview](#project-overview)
 - [Problem Statement](#problem-statement)
 - [Uniqueness](#uniqueness-of-the-project)
 - [Features](#features)
