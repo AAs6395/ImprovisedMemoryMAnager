@@ -32,6 +32,7 @@ The **Improvised Memory Manager** is a comprehensive project designed to simulat
 - **Automated Tests**: Comprehensive test suite using pytest
 - **Analytics Module**: Performance analysis and visualization tools
 
+
 ---
 
 ## 2. Problem Statement
